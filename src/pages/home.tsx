@@ -1,12 +1,13 @@
-import Search from "./../components/search";
-import React from "react";
+import Search from './../components/search';
+import React from 'react';
+import Cards from 'components/cards';
 
-function Home() {
+const HomePage = () => {
   return (
     <div>
       <Search />
+      <Cards />
     </div>
   );
-}
-
-export default Home;
+};
+export default HomePage;
