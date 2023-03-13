@@ -29,11 +29,13 @@
 h4 {
   margin: 10px 0 0 11%;
   color:  lightskyblue;  
+  text-align: left;
 }
 
 ul {
   list-style-type: none;
   margin: 0;
+  text-align: left;
 }
 
 .card-button {

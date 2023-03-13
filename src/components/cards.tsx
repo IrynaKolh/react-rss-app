@@ -12,12 +12,21 @@ class Cards extends Component {
     fetch('https://rickandmortyapi.com/api/character')
       .then((res) => res.json())
       .then((data) => {
+        const localStore = data.results;
         this.setState({ data: data.results });
+        localStorage.setItem('local', JSON.stringify(localStore));
       });
   }
 
   render() {
-    const { data } = this.state;
+    let data;
+    const isLSExist = localStorage.getItem('local');
+    if (isLSExist) {
+      data = JSON.parse(isLSExist);
+    } else {
+      data = [];
+    }
+
     return (
       <div>
         <h1 className="app-title">Rick and Morty characters</h1>
