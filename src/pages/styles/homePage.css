@@ -1,0 +1,6 @@
+.home-page-container {
+  margin: 2%;
+  flex-direction: column;
+  display: flex;
+  text-align: center;
+}

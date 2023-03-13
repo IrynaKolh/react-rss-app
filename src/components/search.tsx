@@ -1,5 +1,6 @@
 import React from 'react';
 import { SearchState } from './../model/interfases';
+import './styles/search.css';
 
 class Search extends React.Component<Record<string, never>, SearchState> {
   constructor(props: Record<string, never>) {
@@ -31,16 +32,15 @@ class Search extends React.Component<Record<string, never>, SearchState> {
   render() {
     const { inputText } = this.state;
     return (
-      <>
+      <div className="search">
         <input
           type="search"
           value={inputText}
           onChange={this.handleInputChange}
           onKeyPress={this.handleKeyPress}
           placeholder="Search character"
-          className="search"
         />
-      </>
+      </div>
     );
   }
 }

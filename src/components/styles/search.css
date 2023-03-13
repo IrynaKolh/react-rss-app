@@ -1,0 +1,13 @@
+input { 
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 20px;
+    border: 2px solid lightskyblue;
+    width: 50%;
+    cursor: pointer;
+}
+
+input:focus,
+input:hover{
+    border-color:#deb887;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Character, CardsState } from './../model/interfases';
 import Card from './card';
+import './styles/cards.css';
 
 class Cards extends Component {
   state: CardsState = {
@@ -19,7 +20,7 @@ class Cards extends Component {
     const { data } = this.state;
     return (
       <div>
-        <h1 className="title">The Star Wars universe and its characters</h1>
+        <h1 className="app-title">Rick and Morty characters</h1>
         <div className="cards-contener">
           {data.map((item: Character) => (
             <Card {...item} key={item.id} />
