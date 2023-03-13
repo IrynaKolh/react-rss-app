@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import { Character, CardsState } from './../model/interfases';
+import { Character } from './../model/interfases';
 import Card from './card';
 import './styles/cards.css';
 
 class Cards extends Component {
-  state: CardsState = {
-    data: [],
-  };
+  // state: CardsState = {
+  //   data: [],
+  // };
 
   componentDidMount() {
     fetch('https://rickandmortyapi.com/api/character')
       .then((res) => res.json())
       .then((data) => {
         const localStore = data.results;
-        this.setState({ data: data.results });
+        // this.setState({ data: data.results });
         localStorage.setItem('local', JSON.stringify(localStore));
       });
   }

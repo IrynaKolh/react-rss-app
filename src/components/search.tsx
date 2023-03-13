@@ -40,6 +40,7 @@ class Search extends React.Component<Record<string, never>, SearchState> {
           onKeyPress={this.handleKeyPress}
           placeholder="Search character"
         />
+        <button className="search-btn">Search</button>
       </div>
     );
   }
