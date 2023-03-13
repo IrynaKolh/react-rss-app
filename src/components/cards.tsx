@@ -1,31 +1,23 @@
 import React, { Component } from 'react';
-import { Character } from './../model/interfases';
+import { CardsState, Character } from './../model/interfases';
 import Card from './card';
 import './styles/cards.css';
 
 class Cards extends Component {
-  // state: CardsState = {
-  //   data: [],
-  // };
+  state: CardsState = {
+    data: [],
+  };
 
   componentDidMount() {
     fetch('https://rickandmortyapi.com/api/character')
       .then((res) => res.json())
       .then((data) => {
-        const localStore = data.results;
-        // this.setState({ data: data.results });
-        localStorage.setItem('local', JSON.stringify(localStore));
+        this.setState({ data: data.results });
       });
   }
 
   render() {
-    let data;
-    const isLSExist = localStorage.getItem('local');
-    if (isLSExist) {
-      data = JSON.parse(isLSExist);
-    } else {
-      data = [];
-    }
+    const { data } = this.state;
 
     return (
       <div>

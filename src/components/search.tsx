@@ -16,11 +16,13 @@ class Search extends React.Component<Record<string, never>, SearchState> {
     this.setState({ inputText });
   };
 
-  handleKeyPress = (e: React.KeyboardEvent): void => {
-    if (e.key === 'Enter') {
-      console.log('enter press here! ');
-    }
+  handleOnSubmit = (e: React.FormEvent<HTMLButtonElement>): void => {
+    e.preventDefault();
+    console.log('Submit!');
+    localStorage.setItem('inputText', this.state.inputText);
+    this.setState({ inputText: '' });
   };
+
   componentWillUnmount() {
     if (this.state.inputText) {
       localStorage.setItem('inputText', this.state.inputText);
@@ -37,10 +39,11 @@ class Search extends React.Component<Record<string, never>, SearchState> {
           type="search"
           value={inputText}
           onChange={this.handleInputChange}
-          onKeyPress={this.handleKeyPress}
           placeholder="Search character"
         />
-        <button className="search-btn">Search</button>
+        <button className="search-btn" onClick={this.handleOnSubmit}>
+          Search
+        </button>
       </div>
     );
   }
