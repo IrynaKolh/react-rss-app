@@ -16,9 +16,8 @@ class Search extends React.Component<Record<string, never>, SearchState> {
     this.setState({ inputText });
   };
 
-  handleOnSubmit = (e: React.FormEvent<HTMLButtonElement>): void => {
+  handleOnClick = (e: React.FormEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-    console.log('Submit!');
     localStorage.setItem('inputText', this.state.inputText);
     this.setState({ inputText: '' });
   };
@@ -34,14 +33,17 @@ class Search extends React.Component<Record<string, never>, SearchState> {
   render() {
     const { inputText } = this.state;
     return (
-      <div className="search">
+      <div className="search-box">
+        <label htmlFor="search"></label>
         <input
+          id="search"
           type="search"
           value={inputText}
           onChange={this.handleInputChange}
           placeholder="Search character"
         />
-        <button className="search-btn" onClick={this.handleOnSubmit}>
+
+        <button className="search-btn" onClick={this.handleOnClick}>
           Search
         </button>
       </div>

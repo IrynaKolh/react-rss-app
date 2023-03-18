@@ -12,10 +12,10 @@ class Card extends React.Component<Character> {
         <h3 className="title">{this.props.name}</h3>
         <h4>Main information: </h4>
         <ul>
-          <li>Status: {this.props.status}</li>
-          <li>Species: {this.props.species}</li>
-          <li>Gender: {this.props.gender}</li>
-          <li>Location: {this.props.location.name}</li>
+          <li key={`status + ${this.props.id}`}>Status: {this.props.status}</li>
+          <li key={`species + ${this.props.id}`}>Species: {this.props.species}</li>
+          <li key={`gender + ${this.props.id}`}>Gender: {this.props.gender}</li>
+          <li key={`location + ${this.props.id}`}>Location: {this.props.location.name}</li>
         </ul>
         <button className="card-button">More information...</button>
       </div>

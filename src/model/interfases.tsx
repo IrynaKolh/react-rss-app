@@ -8,6 +8,7 @@ export type SearchPropsType = {
 
 export type CardsState = {
   data: Character[];
+  error: string;
 };
 
 export interface Character {

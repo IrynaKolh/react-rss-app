@@ -2,27 +2,36 @@ import React, { Component } from 'react';
 import { CardsState, Character } from './../model/interfases';
 import Card from './card';
 import './styles/cards.css';
+import { URL } from './../helpers/constants';
 
 class Cards extends Component {
   state: CardsState = {
     data: [],
+    error: '',
   };
 
   componentDidMount() {
-    fetch('https://rickandmortyapi.com/api/character')
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({ data: data.results });
-      });
+    try {
+      fetch(URL)
+        .then((res) => res.json())
+        .then((data) => {
+          this.setState({ data: data.results });
+        });
+    } catch (error) {
+      this.setState({ error: error });
+    }
   }
 
   render() {
-    const { data } = this.state;
+    const { data, error } = this.state;
 
     return (
       <div>
         <h1 className="app-title">Rick and Morty characters</h1>
-        <div className="cards-contener">
+
+        {error && <span>Something went wrong ... </span>}
+
+        <div role={'list'} className="cards-contener">
           {data.map((item: Character) => (
             <Card {...item} key={item.id} />
           ))}

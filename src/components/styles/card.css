@@ -11,10 +11,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;   
+  margin: 10px;
 }
 
-.image-container>img {
+.image-container > img {
   border-radius: 15px;
 }
 
@@ -23,12 +23,13 @@
   font-size: 25px;
   color: #deb887;
   font-style: italic;
+  margin-top: 1rem;
   margin-bottom: 0;
 }
 
 h4 {
   margin: 10px 0 0 11%;
-  color:  lightskyblue;  
+  color: lightskyblue;
   text-align: left;
 }
 
