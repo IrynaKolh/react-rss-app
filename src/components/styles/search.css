@@ -1,0 +1,26 @@
+input,
+.search-btn {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 20px;
+  border: 2px solid lightskyblue;
+  cursor: pointer;
+}
+
+input {
+  width: 50%;
+}
+
+input:focus,
+input:hover {
+  border-color: #deb887;
+}
+
+.search-btn {
+  width: 10%;
+  background-color: lightskyblue;
+}
+
+.search-btn:hover {
+  background-color: #deb887;
+}

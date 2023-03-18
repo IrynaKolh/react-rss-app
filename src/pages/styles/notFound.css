@@ -1,0 +1,7 @@
+.not-found-page {
+  flex-direction: column;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  height: 80vh;
+}
