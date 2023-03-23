@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
-import Search from './../components/search';
+import Search from '../components/Search';
 import userEvent from '@testing-library/user-event';
 
 describe('Search', () => {

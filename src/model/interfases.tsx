@@ -16,17 +16,21 @@ export interface Character {
   name: string;
   status: string;
   species: string;
-  type: string;
+  type?: string;
   gender: string;
   origin: Location;
   location: Location;
   image: string;
-  episode: Array<string>;
-  url: string;
+  episode?: Array<string>;
+  url?: string;
   created: string;
 }
 
 type Location = {
   name: string;
-  url: string;
+  url?: string;
+};
+
+export type FormProps = {
+  callback: (a: Character) => void;
 };

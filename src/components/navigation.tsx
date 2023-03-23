@@ -9,7 +9,7 @@ function Navigation() {
         Home
       </NavLink>
       <NavLink to="/form" className="nav-link">
-        Add Hero
+        Add Card
       </NavLink>
       <NavLink to="/about" className="nav-link">
         About

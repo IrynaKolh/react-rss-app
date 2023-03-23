@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
-import Navigation from './../components/navigation';
+import Navigation from '../components/Navigation';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 

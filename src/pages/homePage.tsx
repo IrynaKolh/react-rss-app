@@ -1,6 +1,6 @@
-import Search from '../components/search';
+import Search from '../components/Search';
 import React from 'react';
-import Cards from 'components/cards';
+import Cards from './../components/Cards';
 import './../pages/styles/homePage.css';
 
 const HomePage = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import NotFound from '../pages/notFound';
+import NotFound from '../pages/NotFoundPage';
 
 test('renders learn react link', () => {
   const { getByText } = render(<NotFound />);
