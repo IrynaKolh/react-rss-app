@@ -31,6 +31,16 @@ type Location = {
   url?: string;
 };
 
-export type FormProps = {
+export interface FormProps {
   callback: (a: Character) => void;
+}
+
+export type FormFilds = {
+  name: HTMLInputElement;
+  date: HTMLInputElement;
+  status: HTMLSelectElement;
+  gender: HTMLInputElement;
+  location: HTMLSelectElement;
+  species: HTMLInputElement;
+  img: HTMLInputElement;
 };

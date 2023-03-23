@@ -1,7 +1,8 @@
-import { Character } from 'model/interfases';
+import { Character } from './../model/interfases';
 
 export const URL = 'https://rickandmortyapi.com/api/character';
 
+export const MAX_IMAGE_SIZE = 512000;
 export const hits = [
   {
     id: 1,
