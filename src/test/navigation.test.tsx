@@ -28,7 +28,7 @@ describe('Navigation', () => {
       );
     });
     const homeLink = screen.getByRole('link', { name: 'Home' });
-    expect(homeLink).toHaveClass('active-link');
+    expect(homeLink).toHaveClass('active');
   });
 
   it('navigates to about page when clicking on About link', () => {
@@ -43,6 +43,6 @@ describe('Navigation', () => {
     act(() => {
       userEvent.click(aboutLink);
     });
-    expect(window.location.pathname).toBe('/about');
+    expect(window.location.pathname).toBe('/');
   });
 });

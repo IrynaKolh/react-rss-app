@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Card from '../components/Card';
 import Form from '../components/Form';
 import { Character } from '../model/interfases';
+import './styles/formPage.css';
 
 class FormPage extends Component<Record<string, never>> {
   private myCards: Character[];
@@ -20,9 +21,8 @@ class FormPage extends Component<Record<string, never>> {
   render() {
     return (
       <div>
-        <h3 style={{ textAlign: 'center' }}>Add New Character!</h3>
         <Form callback={this.getCardData} />
-        <div className="cards-contener">
+        <div role={'list'} className="form-cards-container">
           {this.myCards.map((item: Character) => (
             <Card {...item} key={item.id} />
           ))}

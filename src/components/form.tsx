@@ -169,51 +169,69 @@ class Forms extends Component<FormProps> {
   render() {
     return (
       <form
+        className="form"
+        autoComplete="off"
         onSubmit={(e: React.FormEvent<HTMLFormElement & FormFilds>) => {
           this.handleSubmit(e);
         }}
       >
-        <div>
-          <label>Name: </label>
+        <h3 className="form-title">Add New Character!</h3>
+        <div className="input-field">
+          <label htmlFor="name">Name: </label>
           <input
             type="text"
             name="name"
-            placeholder="Full Name"
+            id="name"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               this.handleInputChange(e, 'isName')
             }
           />
           {this.isFormValid.isName && <div style={{ color: 'red' }}>Enter character name</div>}
         </div>
-        <div>
-          <label>Date of birth:</label>
+        <div className="input-field">
+          <label></label>
           <input
             type="date"
             name="date"
-            placeholder="Date of your birth"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               this.handleInputChange(e, 'isDate')
             }
           />
           {this.isFormValid.isDate && <div style={{ color: 'red' }}>Select date</div>}
         </div>
-
-        <div>
-          <label>Status:</label>
-          <select
-            name="status"
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              this.handleStatusChange(e, 'isStatus')
-            }
-          >
-            <option> </option>
-            <option>Alive</option>
-            <option>Dead</option>
-            <option>unknown</option>
-          </select>
-          {this.isFormValid.isStatus && <div style={{ color: 'red' }}>Select status</div>}
+        <div className="input-field">
+          <div className="input-group">
+            <label>Status:</label>
+            <select
+              name="status"
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                this.handleStatusChange(e, 'isStatus')
+              }
+            >
+              <option> </option>
+              <option>Alive</option>
+              <option>Dead</option>
+              <option>unknown</option>
+            </select>
+            {this.isFormValid.isStatus && <div style={{ color: 'red' }}>Select status</div>}
+          </div>
+          <div className="input-group">
+            <label>Location:</label>
+            <select
+              name="location"
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                this.handleStatusChange(e, 'isLocation')
+              }
+            >
+              <option> </option>
+              <option>Earth</option>
+              <option>Space</option>
+              <option>unknown</option>
+            </select>
+            {this.isFormValid.isLocation && <div style={{ color: 'red' }}>Select location</div>}
+          </div>
         </div>
-        <div>
+        <div className="input-field input-gender">
           <label>
             Male
             <input
@@ -238,24 +256,9 @@ class Forms extends Component<FormProps> {
           </label>
           {this.isFormValid.isGender && <div style={{ color: 'red' }}>Select gender</div>}
         </div>
-        <div>
-          <label>Location:</label>
-          <select
-            name="location"
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              this.handleStatusChange(e, 'isLocation')
-            }
-          >
-            <option> </option>
-            <option>Earth</option>
-            <option>Space</option>
-            <option>unknown</option>
-          </select>
-          {this.isFormValid.isLocation && <div style={{ color: 'red' }}>Select location</div>}
-        </div>
-        <div>
-          <span>Are you Human?</span>
-          <label>
+        <div className="input-field">
+          <label className="label-check">
+            Are you Human?
             <input
               type="checkbox"
               name="species"
@@ -266,7 +269,7 @@ class Forms extends Component<FormProps> {
             <span></span>
           </label>
         </div>
-        <div>
+        <div className="input-field">
           <label>Link to the character{"'"}s image</label>
           <input
             type="file"
@@ -279,7 +282,7 @@ class Forms extends Component<FormProps> {
           {this.isFormValid.isImg && <div style={{ color: 'red' }}>Upload image</div>}
           {this.isImgSize && <div style={{ color: 'red' }}>Maximum image size 512 KB</div>}
         </div>
-        <input type="submit" value="Submit" disabled={this.idDisabled} />
+        <input className="submit" type="submit" value="Submit" disabled={this.idDisabled} />
       </form>
     );
   }

@@ -14,8 +14,8 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/form" element={<FormPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
