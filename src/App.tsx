@@ -1,21 +1,21 @@
-import HomePage from './pages/homePage';
-import NotFound from './pages/notFound';
-import React from 'react';
+import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import About from 'components/about';
-import Navigation from 'components/navigation';
+import About from './components/About';
+import FormPage from './pages/FormPage';
+import Layout from './components/Layout';
 
 function App() {
   return (
     <>
-      <header>
-        <Navigation />
-      </header>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/form" element={<FormPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
       </Routes>
     </>
   );

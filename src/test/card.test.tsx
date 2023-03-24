@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Card from './../components/card';
-import { exampleCard } from './../helpers/constants';
+import Card from '../components/Card';
+import { exampleCard } from '../helpers/constants';
 
 describe('render Card component', () => {
   it('renders Card component', () => {

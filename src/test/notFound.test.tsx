@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import NotFound from './../pages/notFound';
+import NotFoundPage from '../pages/NotFoundPage';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<NotFound />);
-  const linkElement = getByText(/Page not found!/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders 404 page', () => {
+  const { getByText, getByRole } = render(<NotFoundPage />);
+  expect(getByText(/404! Page not found!/i)).toBeInTheDocument();
+  expect(getByRole('heading')).toHaveClass('not-found-page');
 });

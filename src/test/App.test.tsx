@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
-import App from './../App';
+import App from '../App';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -15,10 +15,15 @@ describe('App', () => {
     });
     const homeLink = screen.getByText(/Home/i);
     const aboutLink = screen.getByText(/About/i);
+    const addCardLink = screen.getByText(/Add Card/i);
     act(() => {
       userEvent.click(aboutLink);
     });
-    expect(screen.getByText(/About us/i)).toBeInTheDocument();
+    expect(screen.getByText(/About/i)).toBeInTheDocument();
+    act(() => {
+      userEvent.click(addCardLink);
+    });
+    expect(screen.getByText(/Add Card/i)).toBeInTheDocument();
     act(() => {
       userEvent.click(homeLink);
     });

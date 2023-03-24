@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Cards from './../components/cards';
+import Cards from '../components/Cards';
 // import axios from 'axios';
 // import { hits } from './../helpers/constants';
 // jest.mock('axios');

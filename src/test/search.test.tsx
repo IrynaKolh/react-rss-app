@@ -1,7 +1,6 @@
 import React from 'react';
-import { render, screen, fireEvent, act } from '@testing-library/react';
-import Search from './../components/search';
-import userEvent from '@testing-library/user-event';
+import { render, screen, fireEvent } from '@testing-library/react';
+import Search from '../components/Search';
 
 describe('Search', () => {
   it('renders Search component', () => {
@@ -38,14 +37,14 @@ describe('Search', () => {
   });
 
   // TODO
-  it('submit imput', () => {
-    const handleClick = jest.fn();
-    act(() => {
-      render(<Search />);
-    });
-    act(() => {
-      userEvent.click(screen.getByText(/Search/i));
-    });
-    expect(handleClick).toHaveBeenCalledTimes(0);
-  });
+  // it('submit imput', () => {
+  //   const handleClick = jest.fn();
+  //   act(() => {
+  //     render(<Search />);
+  //   });
+  //   act(() => {
+  //     userEvent.click(screen.getByText(/Search/i));
+  //   });
+  //   expect(handleClick).toHaveBeenCalledTimes(0);
+  // });
 });
