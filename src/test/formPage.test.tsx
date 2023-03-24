@@ -4,7 +4,7 @@ import FormPage from '../pages/FormPage';
 
 describe('FormPage', () => {
   it('renders FormPage', () => {
-    const { getByText, getByRole, queryByAltText } = render(<FormPage />);
+    const { getByRole, queryByAltText } = render(<FormPage />);
     expect(getByRole('heading')).toHaveClass('form-title');
     expect(getByRole('list')).toHaveClass('form-cards-container');
     expect(queryByAltText(/Character image/i)).toBeNull();
