@@ -40,11 +40,24 @@ export interface FormProps {
 }
 
 export type FormFilds = {
-  name: HTMLInputElement;
-  date: HTMLInputElement;
-  status: HTMLSelectElement;
-  gender: HTMLInputElement;
-  location: HTMLSelectElement;
-  species: HTMLInputElement;
-  img: HTMLInputElement;
+  name: string;
+  birthday: string;
+  status: string;
+  gender: string;
+  location: string;
+  species: boolean;
+  img: FileList | null;
+};
+
+export type FormError = {
+  errors: {
+    name: string;
+    birthday: string;
+    status: string;
+    gender: string;
+    location: string;
+    species: string;
+    img: string;
+  };
+  isValid: boolean;
 };

@@ -1,35 +1,28 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Card from '../components/Card';
 import Form from '../components/Form';
 import { Character } from '../model/interfases';
 import './styles/formPage.css';
 
-class FormPage extends Component<Record<string, never>> {
-  private myCards: Character[];
+const FormPage = () => {
+  const oneCard: Character[] = [];
+  const [myCards, setMyCards] = useState(oneCard);
 
-  constructor(props: Record<string, never>) {
-    super(props);
-    this.getCardData = this.getCardData.bind(this);
-    this.myCards = [];
-  }
+  const getCardData = (newCard: Character) => {
+    const newArray = [...myCards, newCard];
+    setMyCards(newArray);
+  };
 
-  getCardData(newCard: Character) {
-    this.setState({ card: newCard });
-    this.myCards.push(newCard);
-  }
-
-  render() {
-    return (
-      <div>
-        <Form callback={this.getCardData} />
-        <div role={'list'} className="form-cards-container">
-          {this.myCards.map((item: Character) => (
-            <Card {...item} key={item.id} />
-          ))}
-        </div>
+  return (
+    <div>
+      <Form callback={getCardData} />
+      <div role={'list'} className="form-cards-container">
+        {myCards.map((item: Character) => (
+          <Card {...item} key={item.id} />
+        ))}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default FormPage;
