@@ -6,9 +6,13 @@ export type SearchPropsType = {
   props: string;
 };
 
+export type SearchProps = {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
 export type CardsState = {
   data: Character[];
-  error: string;
 };
 
 export interface Character {
