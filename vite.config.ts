@@ -21,6 +21,7 @@ export default defineConfig({
         'vite.config.ts',
         'src/vite-env.d.ts',
         'src/test/**',
+        'dist',
       ],
     },
     watch: false,
