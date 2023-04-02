@@ -1,5 +1,5 @@
 import React from 'react';
-import { Character } from './../model/interfases';
+import { Character } from '../model/interfases';
 import './styles/card.css';
 
 class Card extends React.Component<Character> {
