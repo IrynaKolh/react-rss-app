@@ -85,13 +85,15 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
       </div>
       <div className="input-field">
         <div className="input-group">
-          <label>Status:</label>
-          <select {...register('status', { required: 'Select status' })}>
-            <option> </option>
-            <option>Alive</option>
-            <option>Dead</option>
-            <option>unknown</option>
-          </select>
+          <label>
+            Status:
+            <select {...register('status', { required: 'Select status' })}>
+              <option> </option>
+              <option>Alive</option>
+              <option>Dead</option>
+              <option>unknown</option>
+            </select>
+          </label>
           {errors.status && <div style={{ color: 'red' }}>{errors.status.message}</div>}
         </div>
         <div className="input-group">
