@@ -2,30 +2,23 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Search from '../components/Search';
 
+const searchProps = {
+  value: 'react',
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+  },
+};
+
 describe('Search', () => {
   it('renders Search component', () => {
-    render(<Search />);
-    expect(screen.getByText(/Search/i)).toBeInTheDocument();
+    render(<Search {...searchProps} />);
     expect(screen.getByRole('searchbox')).toBeInTheDocument();
-    // expect(screen.getByLabelText(/search/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Search character')).toBeInTheDocument();
-    expect(screen.getByDisplayValue('')).toBeInTheDocument();
-    //toHaveClass
-    // toHaveStyles
+    expect(screen.getByDisplayValue('react')).toBeInTheDocument();
     expect(screen.getByLabelText('')).not.toBeRequired();
     expect(screen.getByLabelText('')).toBeEmptyDOMElement;
     expect(screen.getByLabelText('')).toHaveAttribute('id');
-  });
-
-  it('event Search component', async () => {
-    render(<Search />);
-    await screen.getByPlaceholderText('Search character');
-    fireEvent.change(screen.getByRole('searchbox'), {
-      target: { value: 'React' },
-    });
-    // =
-    // userEvent.type(screen.getByRole('searchbox'), 'React');
-    expect(screen.getByRole('searchbox')).toHaveValue('React');
+    expect(screen.getByRole('searchbox')).toHaveValue('react');
   });
 
   it('input focus', () => {
@@ -35,16 +28,4 @@ describe('Search', () => {
     input.focus();
     expect(input).toHaveFocus();
   });
-
-  // TODO
-  // it('submit imput', () => {
-  //   const handleClick = jest.fn();
-  //   act(() => {
-  //     render(<Search />);
-  //   });
-  //   act(() => {
-  //     userEvent.click(screen.getByText(/Search/i));
-  //   });
-  //   expect(handleClick).toHaveBeenCalledTimes(0);
-  // });
 });

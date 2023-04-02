@@ -5,17 +5,16 @@ import { Character } from '../model/interfases';
 import './styles/formPage.css';
 
 const FormPage = () => {
-  const oneCard: Character[] = [];
-  const [myCards, setMyCards] = useState(oneCard);
+  const [myCards, setMyCards] = useState<Character[]>([]);
 
   const getCardData = (newCard: Character) => {
-    const newArray = [...myCards, newCard];
+    const newArray: Character[] = [...myCards, newCard];
     setMyCards(newArray);
   };
 
   return (
     <div>
-      <Form callback={getCardData} />
+      <Form onSubmit={getCardData} />
       <div role={'list'} className="form-cards-container">
         {myCards.map((item: Character) => (
           <Card {...item} key={item.id} />

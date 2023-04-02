@@ -4,7 +4,7 @@ import { FormFilds, FormProps } from '../model/interfases';
 import { useForm } from 'react-hook-form';
 import { validateBirthDate, validateName } from '../helpers/validators';
 
-const Form = (props: FormProps) => {
+const Form: React.FC<FormProps> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -20,7 +20,7 @@ const Form = (props: FormProps) => {
   }, [errors, isDirty]);
 
   const onFormSubmit = (form: FormFilds) => {
-    const curFiles = form.img;
+    const curFiles = form.image;
     const imgUrl = curFiles ? URL.createObjectURL(curFiles[0]) : ' ';
     const newCard = {
       id: Date.now(),
@@ -35,11 +35,10 @@ const Form = (props: FormProps) => {
         name: form.location,
       },
       image: imgUrl,
-      created: form.birthday,
+      created: form.created,
     };
-    props.callback(newCard);
+    onSubmit(newCard);
     setIsValid(true);
-    console.log(form);
     setTimeout(() => {
       reset();
       setIsValid(false);
@@ -68,19 +67,19 @@ const Form = (props: FormProps) => {
       </div>
       <div className="input-field">
         <label>
-          Date of birth
+          Date of birth:
           <input
             type="date"
-            {...register('birthday', {
+            {...register('created', {
               required: 'Please enter your date of birth',
               validate: (value) => validateBirthDate(value),
             })}
           />
         </label>
-        {errors.birthday?.type === 'required' && (
-          <div style={{ color: 'red' }}>{errors.birthday.message}</div>
+        {errors.created?.type === 'required' && (
+          <div style={{ color: 'red' }}>{errors.created.message}</div>
         )}
-        {errors.birthday?.type === 'validate' && (
+        {errors.created?.type === 'validate' && (
           <div style={{ color: 'red' }}>The birth date can not be in a future!</div>
         )}
       </div>
@@ -132,13 +131,10 @@ const Form = (props: FormProps) => {
       </div>
       <div className="input-field">
         <label>
-          Link to the character{"'"}s image
-          <input
-            type="file"
-            {...register('img', { required: 'Please upload your profile image' })}
-          />
+          Link to the character&lsquo;s image
+          <input type="file" {...register('image', { required: 'Please upload profile image' })} />
         </label>
-        {errors.img && <div style={{ color: 'red' }}>{errors.img.message}</div>}
+        {errors.image && <div style={{ color: 'red' }}>{errors.image.message}</div>}
       </div>
       <input className="submit" type="submit" value="Submit" disabled={isDisabled} />
       {isValid && <div style={{ color: '#deb887' }}>New character have been saved</div>}

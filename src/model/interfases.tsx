@@ -36,17 +36,17 @@ type Location = {
 };
 
 export interface FormProps {
-  callback: (a: Character) => void;
+  onSubmit: (a: Character) => void;
 }
 
 export type FormFilds = {
   name: string;
-  birthday: string;
+  created: string;
   status: string;
   gender: string;
   location: string;
   species: boolean;
-  img: FileList | null;
+  image: FileList | null;
 };
 
 export type FormError = {
@@ -57,7 +57,7 @@ export type FormError = {
     gender: string;
     location: string;
     species: string;
-    img: string;
+    image: string;
   };
   isValid: boolean;
 };
