@@ -15,7 +15,7 @@ const HomePage = () => {
     fetch(`${URL}?${SEARCH_PARAM}${searchQuery}`)
       .then((res) => {
         if (res.ok === false) {
-          throw Error('Server does not response. Try later.');
+          throw Error('Not found. Try another search request!');
         }
         return res.json();
       })
