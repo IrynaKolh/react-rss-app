@@ -31,10 +31,14 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem('search', searchQuery);
+    return () => {
+      localStorage.setItem('search', searchQueryRef.current!);
+    };
+  }, []);
+
+  useEffect(() => {
     searchQueryRef.current = searchQuery;
     fetchData(searchQuery);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
