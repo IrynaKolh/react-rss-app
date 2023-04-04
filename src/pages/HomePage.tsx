@@ -15,7 +15,7 @@ const HomePage = () => {
     fetch(`${URL}?${SEARCH_PARAM}${searchQuery}`)
       .then((res) => {
         if (res.ok === false) {
-          throw Error('Server does not response. Try later.');
+          throw Error('Not found. Try another search request!');
         }
         return res.json();
       })
@@ -31,10 +31,14 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem('search', searchQuery);
+    return () => {
+      localStorage.setItem('search', searchQueryRef.current!);
+    };
+  }, []);
+
+  useEffect(() => {
     searchQueryRef.current = searchQuery;
     fetchData(searchQuery);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
