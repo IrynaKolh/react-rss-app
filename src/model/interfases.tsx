@@ -61,3 +61,5 @@ export type FormError = {
   };
   isValid: boolean;
 };
+
+export type SortType = 'name' | 'created';

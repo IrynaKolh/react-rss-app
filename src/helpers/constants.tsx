@@ -1,7 +1,13 @@
 import { Character } from './../model/interfases';
 
-export const URL = 'https://rickandmortyapi.com/api/character';
+export const URL = 'https://rickandmortyapi.com/api/';
+export enum Endpoint {
+  characters = 'character',
+  locations = 'location',
+  episodes = 'episode',
+}
 export const SEARCH_PARAM = 'name=';
+export const PAGE = 'page=';
 
 export const MAX_IMAGE_SIZE = 512000;
 export const cardsProps = {
