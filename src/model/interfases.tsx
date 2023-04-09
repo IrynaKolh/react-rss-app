@@ -63,3 +63,9 @@ export type FormError = {
 };
 
 export type SortType = 'name' | 'created';
+
+export type ModalProps = {
+  visible: boolean;
+  setVisible: () => void;
+  data: Character;
+};

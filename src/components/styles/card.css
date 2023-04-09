@@ -1,5 +1,5 @@
 .card-container {
-  width: 350px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   border: 1px solid #c0c0c0;
@@ -12,8 +12,8 @@
   justify-content: center;
   align-items: center;
   margin: 10px auto;
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
 }
 
 .image-container > img {
@@ -25,11 +25,11 @@
 
 .title {
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   color: #deb887;
   font-style: italic;
   margin-top: 1rem;
-  margin-bottom: 0;
+  margin: 5px auto;
 }
 
 h4 {
@@ -42,11 +42,9 @@ ul {
   list-style-type: none;
   margin: 0;
   text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 3px 15px;
 }
 
-.card-button {
-  margin: 10px;
-  width: 50%;
-  align-self: center;
-  cursor: pointer;
-}
