@@ -1,13 +1,10 @@
 import React from 'react';
 import './styles/modalCard.css';
 import { ModalProps } from '../model/interfases';
+import { parseDate } from '../helpers/utils';
 
 const ModalCard = ({ visible, onClose, data }: ModalProps) => {
   const showHideClassName = visible ? 'modal-card modal-active' : 'modal-card';
-  const parseDate = (data: string) => {
-    const date = new Date(data);
-    return date.toDateString();
-  };
 
   return (
     <>

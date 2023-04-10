@@ -72,7 +72,7 @@ export type ModalProps = {
 
 export type CardProps = {
   card: Character;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export type PaginationProps = {
