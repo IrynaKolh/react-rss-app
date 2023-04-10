@@ -7,7 +7,7 @@ import { vi } from 'vitest';
 
 const modalData: ModalProps = {
   visible: true,
-  setVisible: vi.fn(),
+  onClose: vi.fn(),
   data: exampleCard.card,
 };
 
@@ -20,6 +20,8 @@ describe('render ModalCard component', () => {
     expect(screen.getByText(/Male/i)).toBeInTheDocument();
     expect(screen.getAllByText(/Earth/i)).toHaveLength(2);
     expect(screen.getByText(/Human/i)).toBeInTheDocument();
+    expect(screen.getByText(/Created/i)).toBeInTheDocument();
+    expect(screen.getByText(/Number of episode/i)).toBeInTheDocument();
   });
 
   it('renders correctly when visible prop is true', () => {

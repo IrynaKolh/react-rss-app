@@ -7,8 +7,9 @@ import ModalCard from './ModalCard';
 const Cards = (cardData: CardsState) => {
   const [isModal, setIsModal] = useState(false);
   const [card, setCard] = useState<Character | null>(null);
-  const toggle = () => {
-    setIsModal(!isModal);
+  const onClose = () => {
+    setIsModal(false);
+    setCard(null);
   };
   return (
     <div>
@@ -24,7 +25,7 @@ const Cards = (cardData: CardsState) => {
           />
         ))}
       </div>
-      {card && <ModalCard visible={isModal} setVisible={toggle} data={card}></ModalCard>}
+      {card && <ModalCard visible={isModal} onClose={onClose} data={card}></ModalCard>}
     </div>
   );
 };

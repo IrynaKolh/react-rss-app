@@ -66,7 +66,7 @@ export type SortType = 'name' | 'created';
 
 export type ModalProps = {
   visible: boolean;
-  setVisible: () => void;
+  onClose: () => void;
   data: Character;
 };
 

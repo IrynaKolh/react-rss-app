@@ -1,25 +1,40 @@
-.modal-card {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  display: none;
-  background: rgba(0, 0, 0, 0.5);
-}
+  @keyframes slide {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .modal-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    animation: slide 0.2s linear;
+    border: 2px solid lightskyblue;
+  }
 
-.modal-active {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #FFF;
-  display: block; 
-  width: 80vw;   
-  height: 80vh;
-  border-radius: 10px; 
-  box-shadow: 18px 23px 14px -12px #07070733;
-  border: 2px solid lightskyblue;
+  .modal-active {
+    background-color: #FFF;
+  }
+
+.close-btn {
+  position: fixed;
+  right: 20px;
+  top: 10px;
+  color: lightblue;
+  background-color: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
 }
 
 .modal-container {
