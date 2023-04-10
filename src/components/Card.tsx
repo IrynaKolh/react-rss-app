@@ -1,11 +1,6 @@
 import React from 'react';
-import { Character } from '../model/interfases';
+import { CardProps } from '../model/interfases';
 import './styles/card.css';
-
-type CardProps = {
-  card: Character;
-  onClick: () => void;
-};
 
 const Card = ({ card, onClick }: CardProps) => {
   return (

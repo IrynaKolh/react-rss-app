@@ -69,3 +69,13 @@ export type ModalProps = {
   setVisible: () => void;
   data: Character;
 };
+
+export type CardProps = {
+  card: Character;
+  onClick: () => void;
+};
+
+export type PaginationProps = {
+  page: number | string;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};

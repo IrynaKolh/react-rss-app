@@ -12,7 +12,7 @@ const ModalCard = ({ visible, setVisible, data }: ModalProps) => {
   return (
     <>
       {visible && (
-        <div className={showHideClassName} onClick={setVisible}>
+        <div data-testid="modal-card" className={showHideClassName} onClick={setVisible}>
           <div className="modal-container">
             <div className="modal-image-container">
               <img src={data.image} alt="Character image" />

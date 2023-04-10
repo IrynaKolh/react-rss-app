@@ -15,19 +15,3 @@
   flex-direction: row;
   gap: 1rem;
 }
-.pagination {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  margin: 1rem;
-}
-
-.pagination-btn {
-  border-radius: 50%;
-  border: 1px solid lightblue;
-  cursor: pointer;
-}
-
-.pagination-btn:hover {
-  background-color: lightblue;
-}
