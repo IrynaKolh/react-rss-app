@@ -9,7 +9,7 @@ import { fetchCards, setCurrentPage } from '../store/cardsSlice';
 import { setSearchQuery } from '../store/searchSlice';
 
 const HomePage = () => {
-  const { cardsList, pages, count, cardsPerRage, loading, error, currentPage } = useAppSelector(
+  const { cardsList, cardsPerRage, loading, error, currentPage } = useAppSelector(
     (state) => state.cards
   );
   const searchQuery = useAppSelector((state) => state.search.searchQuery);
@@ -31,7 +31,7 @@ const HomePage = () => {
   };
 
   const clickHandlerPage = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    const btn = e.target as HTMLButtonElement; //
+    const btn = e.target as HTMLButtonElement;
     const btnType = btn.getAttribute('data-name');
 
     switch (btnType) {

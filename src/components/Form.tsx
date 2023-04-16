@@ -10,7 +10,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
     handleSubmit,
     formState: { errors, isDirty },
     reset,
-  } = useForm<FormFilds>();
+  } = useForm<FormFilds>({ reValidateMode: 'onSubmit' });
 
   const [isDisabled, setDisabled] = useState(true);
   const [isValid, setIsValid] = useState(false);
