@@ -4,7 +4,8 @@ import Card from './Card';
 import './styles/cards.css';
 import ModalCard from './ModalCard';
 
-const Cards = (cardData: CardsState) => {
+const Cards: React.FC<CardsState> = (cardData) => {
+  const cardsList = cardData.cardsList;
   const [isModal, setIsModal] = useState(false);
   const [card, setCard] = useState<Character | null>(null);
   const onClose = () => {
@@ -14,7 +15,7 @@ const Cards = (cardData: CardsState) => {
   return (
     <div>
       <div role={'list'} className="cards-contener">
-        {cardData.data.map((item: Character) => (
+        {cardsList.map((item: Character) => (
           <Card
             card={item}
             key={item.id}

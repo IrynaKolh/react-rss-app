@@ -1,11 +1,7 @@
 import { CardProps } from './../model/interfases';
 
-export const URL = 'https://rickandmortyapi.com/api/';
-export enum Endpoint {
-  characters = 'character',
-  locations = 'location',
-  episodes = 'episode',
-}
+export const URL = 'https://rickandmortyapi.com/api/character/';
+
 export const SEARCH_PARAM = 'name=';
 export const PAGE = 'page=';
 

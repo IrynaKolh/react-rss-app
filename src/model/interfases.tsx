@@ -7,12 +7,11 @@ export type SearchPropsType = {
 };
 
 export type SearchProps = {
-  value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export type CardsState = {
-  data: Character[];
+  cardsList: Character[];
 };
 
 export interface Character {
@@ -72,10 +71,18 @@ export type ModalProps = {
 
 export type CardProps = {
   card: Character;
-  onClick?: () => void;
+  onClick: () => void;
 };
 
 export type PaginationProps = {
-  page: number | string;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+export type ApiResponce = {
+  info: {
+    count: number;
+    pages: number;
+  };
+  results: Required<Character>[];
+  error: string;
 };
