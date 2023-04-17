@@ -30,7 +30,7 @@ const Pagination = (props: PaginationProps) => {
           <button
             className="pagination-btn"
             onClick={onClick}
-            disabled={currentPage == 42}
+            disabled={currentPage == last}
             data-name="next"
           >
             {'>>'}
