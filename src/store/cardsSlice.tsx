@@ -71,7 +71,6 @@ const cardsSlice = createSlice({
       })
       .addCase(fetchCards.fulfilled, (state, action) => {
         state.loading = false;
-        console.log(action.payload);
         if (action.payload.info) {
           state.pages = action.payload.info.pages;
           state.count = action.payload.info.count;

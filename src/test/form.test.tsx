@@ -2,11 +2,21 @@ import React from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import Form from './../components/Form';
 import { vi } from 'vitest';
+import { Provider } from 'react-redux';
+import store from '../store';
+
+const onSubmitMock = vi.fn();
+
+beforeEach(() => {
+  render(
+    <Provider store={store}>
+      <Form onSubmit={onSubmitMock} />
+    </Provider>
+  );
+});
 
 describe('Form component', () => {
   it('should render Form correctly', () => {
-    const onSubmitMock = vi.fn();
-    render(<Form onSubmit={onSubmitMock} />);
     expect(screen.getByRole('heading', { name: 'Add New Character!' })).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'Character name:' })).toBeInTheDocument();
     expect(screen.getByLabelText('Date of birth:')).toBeInTheDocument();
@@ -28,8 +38,6 @@ describe('Form component', () => {
 
 describe('Form component', () => {
   it('Submit button should be disabled at initialization (before the first typing)', async () => {
-    const onSubmitMock = vi.fn();
-    render(<Form onSubmit={onSubmitMock} />);
     expect(screen.getByRole('button')).toBeInTheDocument();
     expect(screen.getByRole('button')).toBeDisabled();
     await act(async () => {
@@ -43,9 +51,6 @@ describe('Form component', () => {
 
 describe('Form component', () => {
   it('submit form with valid input', async () => {
-    const onSubmitMock = vi.fn();
-    render(<Form onSubmit={onSubmitMock} />);
-
     await act(async () => {
       fireEvent.change(screen.getByRole('textbox', { name: 'Character name:' }), 'Test');
       fireEvent.change(screen.getByLabelText('Date of birth:'), {
