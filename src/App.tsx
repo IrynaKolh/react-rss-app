@@ -6,21 +6,18 @@ import About from './components/About';
 import FormPage from './pages/FormPage';
 import Layout from './components/Layout';
 import { Routes, Route } from 'react-router-dom';
+// import { useEffect, useState } from 'react';
 
-// const App = () => {
-//   const routes = useRoutes([
-//     { path: '/', element: <Layout /> },
-//     { path: '/about', element: <About /> },
-//     { path: '/form', element: <FormPage /> },
-//     { path: '*', element: <NotFoundPage /> },
-//   ]);
+const App = () => {
+  // const [showing, setShowing] = useState(false);
+  // useEffect(() => {
+  //   setShowing(true);
+  // }, []);
 
-//   return routes;
-// };
+  // if (!showing) {
+  //   return null;
+  // }
 
-// export default App;
-
-function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -31,6 +28,6 @@ function App() {
       </Route>
     </Routes>
   );
-}
+};
 
 export default App;

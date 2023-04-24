@@ -19,3 +19,16 @@ export function render(url: string | Partial<Location>, opts: RenderToPipeableSt
   );
   return { html };
 }
+
+// export function render(url: string | Partial<Location>) {
+//   const html = ReactDOMServer.renderToString(
+//     <React.StrictMode>
+//       <Provider store={store}>
+//         <StaticRouter location={url}>
+//           <App />
+//         </StaticRouter>
+//       </Provider>
+//     </React.StrictMode>
+//   );
+//   return { html };
+// }
