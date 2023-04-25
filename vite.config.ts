@@ -7,11 +7,11 @@ export default defineConfig({
   plugins: [react()],
   // ssr: { noExternal: [@reduxjs/toolkits]},
   build: {
-    // generate manifest.json in outDir
-    manifest: true,
+    sourcemap: true,
     rollupOptions: {
-      // overwrite default .html entry
-      input: './src/entry-client.tsx',
+      output: {
+        minifyInternalExports: false,
+      },
     },
   },
   test: {

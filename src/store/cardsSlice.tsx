@@ -1,4 +1,11 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { PayloadAction } from '@reduxjs/toolkit';
+import * as toolkitRaw from '@reduxjs/toolkit';
+
+type TypeToolkitRaw = typeof toolkitRaw & { default?: unknown };
+const { createSlice } = ((toolkitRaw as TypeToolkitRaw).default ?? toolkitRaw) as typeof toolkitRaw;
+const { createAsyncThunk } = ((toolkitRaw as TypeToolkitRaw).default ??
+  toolkitRaw) as typeof toolkitRaw;
+
 import { URL, PAGE, SEARCH_PARAM } from '../helpers/constants';
 import { ApiResponce, Character } from '../model/interfases';
 import { RootState } from '.';

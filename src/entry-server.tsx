@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 export function render(url: string | Partial<Location>, opts: RenderToPipeableStreamOptions) {
-  const html = ReactDOMServer.renderToPipeableStream(
+  const stream = ReactDOMServer.renderToPipeableStream(
     <React.StrictMode>
       <Provider store={store}>
         <StaticRouter location={url}>
@@ -17,7 +17,7 @@ export function render(url: string | Partial<Location>, opts: RenderToPipeableSt
     </React.StrictMode>,
     opts
   );
-  return { html };
+  return { stream };
 }
 
 // export function render(url: string | Partial<Location>) {
