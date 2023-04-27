@@ -5,10 +5,11 @@ import express from 'express';
 import process from 'process';
 import { ViteDevServer, createServer as createViteServer } from 'vite';
 
-const resolve = (p: string) => path.resolve(__dirname, p);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const resolve = (p: string) => path.resolve(__dirname, p);
 const port = 5173;
 const isProd = !process.env.NODE_ENV;
+console.log(isProd);
 
 async function createServer() {
   const app = express();
@@ -47,7 +48,7 @@ async function createServer() {
       }
       const parts = template.split('<!--app-html-->');
 
-      const stream = await render(req.url, {
+      const stream = await render(url, {
         onShellReady() {
           res.write(parts[0]);
           stream.pipe(res);

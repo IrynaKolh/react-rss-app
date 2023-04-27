@@ -1,12 +1,13 @@
 import Search from '../components/Search';
-import React, { useEffect } from 'react';
-import Cards from '../components/Cards';
+import React, { Suspense, lazy, useEffect } from 'react';
 import './../pages/styles/homePage.css';
 import Loader from '../components/Loader';
 import Pagination from '../components/Pagination';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { fetchCards, setCurrentPage } from '../store/cardsSlice';
 import { setSearchQuery } from '../store/searchSlice';
+
+const Cards = lazy(() => import('../components/Cards'));
 
 const HomePage = () => {
   const { cardsList, cardsPerRage, loading, error, currentPage } = useAppSelector(
@@ -62,7 +63,9 @@ const HomePage = () => {
         <div>
           <h1 className="app-title">Rick and Morty characters</h1>
           <Pagination onClick={clickHandlerPage} />
-          <Cards {...cardsProps} />
+          <Suspense fallback={<Loader />}>
+            <Cards {...cardsProps} />
+          </Suspense>
         </div>
       ) : (
         <h1 className="app-title">Not found this character... </h1>

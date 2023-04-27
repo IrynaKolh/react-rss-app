@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "useDefineForClassFields": true,
+    // "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
+    // "allowJs": false,
     "skipLibCheck": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
@@ -13,14 +13,14 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    // "isolatedModules": true,
+    // "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["vite/client"],
-    "composite": true,
+    // "types": ["vite/client"],
+    // "composite": true,
     "baseUrl": "."
   },
-  "include": ["./src", "./server.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "ts-node": {
     "esm": true,

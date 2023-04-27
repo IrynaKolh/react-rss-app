@@ -16,3 +16,4 @@ hydrateRoot(
     </Provider>
   </React.StrictMode>
 );
+console.log('Must start hydrating...');
