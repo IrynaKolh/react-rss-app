@@ -1,30 +1,30 @@
-  @keyframes slide {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+@keyframes slide {
+  from {
+    opacity: 0;
   }
-  
-  .modal-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    animation: slide 0.2s linear;
-    border: 2px solid lightskyblue;
+  to {
+    opacity: 1;
   }
+}
 
-  .modal-active {
-    background-color: #FFF;
-  }
+.modal-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  animation: slide 0.2s linear;
+  border: 2px solid lightskyblue;
+}
+
+.modal-active {
+  background-color: #fff;
+}
 
 .close-btn {
   position: fixed;
@@ -52,17 +52,17 @@
   height: 100%;
 }
 
-.modal-image-container>img {
-  height: 100%;  
+.modal-image-container > img {
+  height: 100%;
 }
 
 .text-container {
-  height: 100%;  
+  height: 100%;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
 }
 
-.modal-title{
+.modal-title {
   text-align: center;
   font-size: 2rem;
   color: #deb887;
@@ -77,9 +77,8 @@
   gap: 10px;
 }
 
-
 .info-title {
-  margin: 10px ;
+  margin: 10px;
   color: lightskyblue;
   text-align: left;
 }
