@@ -63,7 +63,7 @@ const HomePage = () => {
         <div>
           <h1 className="app-title">Rick and Morty characters</h1>
           <Pagination onClick={clickHandlerPage} />
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<div> Loading ... </div>}>
             <Cards {...cardsProps} />
           </Suspense>
         </div>

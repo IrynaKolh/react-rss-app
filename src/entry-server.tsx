@@ -1,13 +1,12 @@
 import React from 'react';
-import { renderToPipeableStream, RenderToPipeableStreamOptions } from 'react-dom/server';
+import { renderToPipeableStream } from 'react-dom/server';
 import App from './App';
 import { StaticRouter } from 'react-router-dom/server';
-import { Location } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 
-export function render(url: string | Partial<Location>, opts: RenderToPipeableStreamOptions) {
-  const stream = renderToPipeableStream(
+export function render(url: string, opts?: object) {
+  return renderToPipeableStream(
     <React.StrictMode>
       <Provider store={store}>
         <StaticRouter location={url}>
@@ -17,7 +16,6 @@ export function render(url: string | Partial<Location>, opts: RenderToPipeableSt
     </React.StrictMode>,
     opts
   );
-  return { stream };
 }
 
 // export function render(url: string | Partial<Location>) {
