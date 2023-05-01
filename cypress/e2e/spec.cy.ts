@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Just visit e2e test', () => {
+describe('Navigation', () => {
   it('should navigate to pages', () => {
     cy.visit('/');
     cy.contains('About').click();
@@ -27,6 +27,13 @@ describe('Home component', () => {
   it('filters cards by search term', () => {
     cy.get('input').type('Morty');
     cy.get('.title').first().should('contain', 'Morty');
+  });
+
+  it('displays card info', () => {
+    cy.get('.card-container').first().children().should('have.length', 3);
+    cy.get('.image-container').children('img');
+    cy.get('h3').should('have.class', 'title');
+    cy.get('.card-container > ul').first().children().should('have.length', 2);
   });
 
   it('displays a modal when a card is clicked', () => {
