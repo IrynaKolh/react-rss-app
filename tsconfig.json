@@ -13,10 +13,10 @@
     "strict": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,    
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
-  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs", "cypress"],
+  "exclude": ["node_modules", "dist/**/*"],
   "ts-node": {
     "esm": true
   }

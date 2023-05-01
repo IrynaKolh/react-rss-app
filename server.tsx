@@ -9,7 +9,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const resolve = (p: string) => path.resolve(__dirname, p);
 const port = 5173;
 const isProd = !process.env.NODE_ENV;
-console.log(isProd);
 
 async function createServer() {
   const app = express();
