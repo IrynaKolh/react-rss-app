@@ -9,6 +9,7 @@ import Pagination from '../components/Pagination';
 
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState(localStorage.getItem('search') ?? '');
+
   const [data, setData] = useState<Character[] | []>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,6 +34,7 @@ const HomePage = () => {
         setIsLoading(false);
         setError(err.message);
         setData([]);
+
       });
   };
 
