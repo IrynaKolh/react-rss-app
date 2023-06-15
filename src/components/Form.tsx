@@ -1,290 +1,147 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles/form.css';
 import { FormFilds, FormProps } from '../model/interfases';
-import { MAX_IMAGE_SIZE } from '../helpers/constants';
+import { useForm } from 'react-hook-form';
+import { validateBirthDate, validateName } from '../helpers/validators';
 
-class Forms extends Component<FormProps> {
-  isFormValid: Record<string, boolean>;
-  isSubmit: boolean;
-  idDisabled: boolean;
-  isChangeForm: boolean;
-  isImgSize: boolean;
-  constructor(props: FormProps) {
-    super(props);
-    this.isFormValid = {
-      isName: false,
-      isDate: false,
-      isStatus: false,
-      isGender: false,
-      isLocation: false,
-      isImg: false,
+const Form: React.FC<FormProps> = ({ onSubmit }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isDirty },
+    reset,
+  } = useForm<FormFilds>();
+
+  const [isDisabled, setDisabled] = useState(true);
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    setDisabled(!(isDirty && Object.keys(errors).length === 0));
+  }, [errors, isDirty]);
+
+  const onFormSubmit = (form: FormFilds) => {
+    const curFiles = form.image;
+    const imgUrl = curFiles ? URL.createObjectURL(curFiles[0]) : ' ';
+    const newCard = {
+      id: Date.now(),
+      name: form.name,
+      status: form.status,
+      species: form.species ? 'Human' : 'Alien',
+      gender: form.gender,
+      origin: {
+        name: form.location,
+      },
+      location: {
+        name: form.location,
+      },
+      image: imgUrl,
+      created: form.created,
     };
-    this.isSubmit = false;
-    this.isChangeForm = false;
-    this.idDisabled = true;
-    this.isImgSize = false;
-  }
+    onSubmit(newCard);
+    setIsValid(true);
+    setTimeout(() => {
+      reset();
+      setIsValid(false);
+    }, 1000);
+  };
 
-  handleSubmit(event: React.FormEvent<HTMLFormElement & FormFilds>) {
-    event.preventDefault();
-    if (!this.isChangeForm) this.isChangeForm = true;
-    const form = event.currentTarget;
-    let isChangeState = false;
-
-    if (form.name.value === '') {
-      this.isFormValid.isName = true;
-      isChangeState = true;
-    }
-
-    if (form.date.value === '') {
-      this.isFormValid.isDate = true;
-      isChangeState = true;
-    }
-
-    if (form.status.value === '') {
-      this.isFormValid.isStatus = true;
-      isChangeState = true;
-    }
-
-    if (form.gender.value === '') {
-      this.isFormValid.isGender = true;
-      isChangeState = true;
-    }
-
-    if (form.location.value === '') {
-      this.isFormValid.isLocation = true;
-      isChangeState = true;
-    }
-
-    if (form.img.value === '') {
-      this.isFormValid.isImg = true;
-      isChangeState = true;
-    } else {
-      this.checkSizeImage(form.img.files);
-      isChangeState = this.isImgSize;
-    }
-
-    if (isChangeState) {
-      this.idDisabled = true;
-      this.forceUpdate();
-    } else {
-      this.idDisabled = false;
-
-      const curFiles = form.img.files;
-      const imgUrl = curFiles ? URL.createObjectURL(curFiles[0]) : ' ';
-      const newCard = {
-        id: Date.now(),
-        name: form.name.value,
-        status: form.status.value,
-        species: form.species.checked ? 'Human' : 'Alien',
-        gender: form.gender.value,
-        origin: {
-          name: form.location.value,
-        },
-        location: {
-          name: form.location.value,
-        },
-        image: imgUrl,
-        created: Date.now().toString(),
-      };
-      this.props.callback(newCard);
-      form.reset();
-      this.resetisFormValids();
-    }
-  }
-  resetisFormValids() {
-    this.isFormValid = {
-      isName: false,
-      isDate: false,
-      isStatus: false,
-      isGender: false,
-      isLocation: false,
-      isImg: false,
-    };
-    this.isSubmit = false;
-    this.isChangeForm = false;
-    this.idDisabled = true;
-    this.isImgSize = false;
-    this.forceUpdate();
-  }
-
-  checkSizeImage(curFiles: FileList | null) {
-    if (curFiles) {
-      const file = curFiles[0];
-      if (file.size > MAX_IMAGE_SIZE) {
-        this.isImgSize = true;
-      } else {
-        this.isImgSize = false;
-      }
-    }
-  }
-  isFirstActivation() {
-    if (!this.isChangeForm) {
-      this.idDisabled = false;
-    } else {
-      this.idDisabled =
-        this.isSubmit ||
-        this.isFormValid.isStatus ||
-        this.isFormValid.isName ||
-        this.isFormValid.isDate ||
-        this.isFormValid.isImg ||
-        this.isFormValid.isGender ||
-        this.isImgSize ||
-        this.isFormValid.isLocation;
-    }
-    this.forceUpdate();
-  }
-
-  handleInputChange(e: React.ChangeEvent<HTMLInputElement>, keyisFormValid: string) {
-    if (!this.isChangeForm) {
-      this.idDisabled = false;
-      this.forceUpdate();
-      return;
-    }
-    if (keyisFormValid === 'isSpecies') {
-      this.isFormValid[keyisFormValid] = !e.target.checked;
-    } else {
-      this.isFormValid[keyisFormValid] = !(e.target.value !== '');
-    }
-    if (keyisFormValid === 'isImg') {
-      const curFiles = e.target.files;
-      this.checkSizeImage(curFiles);
-    }
-    if (keyisFormValid === 'isGender') {
-      this.isFormValid.isGender = !(e.target.value !== '');
-    }
-    this.isFirstActivation();
-  }
-
-  handleStatusChange(e: React.ChangeEvent<HTMLSelectElement>, keyisFormValid: string) {
-    if (keyisFormValid === 'isStatus') {
-      this.isFormValid.isStatus = !(e.target.value !== '');
-    }
-    if (keyisFormValid === 'isLocation') {
-      this.isFormValid.isLocation = !(e.target.value !== '');
-    }
-    this.isFirstActivation();
-  }
-
-  render() {
-    return (
-      <form
-        className="form"
-        autoComplete="off"
-        onSubmit={(e: React.FormEvent<HTMLFormElement & FormFilds>) => {
-          this.handleSubmit(e);
-        }}
-      >
-        <h3 className="form-title">Add New Character!</h3>
-        <div className="input-field">
-          <label htmlFor="name">Name: </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              this.handleInputChange(e, 'isName')
-            }
-          />
-          {this.isFormValid.isName && <div style={{ color: 'red' }}>Enter character name</div>}
-        </div>
-        <div className="input-field">
-          <label></label>
+  return (
+    <form className="form" autoComplete="off" onSubmit={handleSubmit(onFormSubmit)}>
+      <h3 className="form-title">Add New Character!</h3>
+      <div className="input-field">
+        <label htmlFor="name">Character name: </label>
+        <input
+          type="text"
+          id="name"
+          {...register('name', {
+            required: 'Please enter your name',
+            minLength: { value: 3, message: 'min length is 3' },
+            maxLength: { value: 30, message: 'max length is 30' },
+            validate: (value) => validateName(value),
+          })}
+        />
+        {errors.name && <div style={{ color: 'red' }}>{errors.name?.message}</div>}
+        {errors.name?.type === 'validate' && (
+          <div style={{ color: 'red' }}>First letter must be uppercase!</div>
+        )}
+      </div>
+      <div className="input-field">
+        <label>
+          Date of birth:
           <input
             type="date"
-            name="date"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              this.handleInputChange(e, 'isDate')
-            }
+            {...register('created', {
+              required: 'Please enter your date of birth',
+              validate: (value) => validateBirthDate(value),
+            })}
           />
-          {this.isFormValid.isDate && <div style={{ color: 'red' }}>Select date</div>}
-        </div>
-        <div className="input-field">
-          <div className="input-group">
-            <label>Status:</label>
-            <select
-              name="status"
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                this.handleStatusChange(e, 'isStatus')
-              }
-            >
+        </label>
+        {errors.created?.type === 'required' && (
+          <div style={{ color: 'red' }}>{errors.created.message}</div>
+        )}
+        {errors.created?.type === 'validate' && (
+          <div style={{ color: 'red' }}>The birth date can not be in a future!</div>
+        )}
+      </div>
+      <div className="input-field">
+        <div className="input-group">
+          <label>
+            Status:
+            <select {...register('status', { required: 'Select status' })}>
               <option> </option>
               <option>Alive</option>
               <option>Dead</option>
               <option>unknown</option>
             </select>
-            {this.isFormValid.isStatus && <div style={{ color: 'red' }}>Select status</div>}
-          </div>
-          <div className="input-group">
-            <label>Location:</label>
-            <select
-              name="location"
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                this.handleStatusChange(e, 'isLocation')
-              }
-            >
+          </label>
+          {errors.status && <div style={{ color: 'red' }}>{errors.status.message}</div>}
+        </div>
+        <div className="input-group">
+          <label>
+            Location:
+            <select {...register('location', { required: 'Select location' })}>
               <option> </option>
               <option>Earth</option>
               <option>Space</option>
               <option>unknown</option>
             </select>
-            {this.isFormValid.isLocation && <div style={{ color: 'red' }}>Select location</div>}
-          </div>
-        </div>
-        <div className="input-field input-gender">
-          <label>
-            Male
-            <input
-              type="radio"
-              value="Male"
-              name="gender"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                this.handleInputChange(e, 'isGender')
-              }
-            />
           </label>
-          <label>
-            Female
-            <input
-              type="radio"
-              value="Female"
-              name="gender"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                this.handleInputChange(e, 'isGender')
-              }
-            />
-          </label>
-          {this.isFormValid.isGender && <div style={{ color: 'red' }}>Select gender</div>}
+          {errors.location && <div style={{ color: 'red' }}>{errors.location.message}</div>}
         </div>
-        <div className="input-field">
-          <label className="label-check">
-            Are you Human?
-            <input
-              type="checkbox"
-              name="species"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                this.handleInputChange(e, 'isCheck')
-              }
-            />
-            <span></span>
-          </label>
-        </div>
-        <div className="input-field">
-          <label>Link to the character{"'"}s image</label>
+      </div>
+      <div className="input-field input-gender">
+        <label>
+          Male
+          <input type="radio" value="Male" {...register('gender', { required: 'Select gender' })} />
+        </label>
+        <label>
+          Female
           <input
-            type="file"
-            name="img"
-            accept="image/*"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              this.handleInputChange(e, 'isImg')
-            }
+            type="radio"
+            value="Female"
+            {...register('gender', { required: 'Select gender' })}
           />
-          {this.isFormValid.isImg && <div style={{ color: 'red' }}>Upload image</div>}
-          {this.isImgSize && <div style={{ color: 'red' }}>Maximum image size 512 KB</div>}
-        </div>
-        <input className="submit" type="submit" value="Submit" disabled={this.idDisabled} />
-      </form>
-    );
-  }
-}
-export default Forms;
+        </label>
+        {errors.gender && <div style={{ color: 'red' }}>{errors.gender.message}</div>}
+      </div>
+      <div className="input-field">
+        <label className="label-check">
+          Are you Human?
+          <input type="checkbox" {...register('species')} />
+          <span></span>
+        </label>
+      </div>
+      <div className="input-field">
+        <label>
+          Link to the character&lsquo;s image
+          <input type="file" {...register('image', { required: 'Please upload profile image' })} />
+        </label>
+        {errors.image && <div style={{ color: 'red' }}>{errors.image.message}</div>}
+      </div>
+      <input className="submit" type="submit" value="Submit" disabled={isDisabled} />
+      {isValid && <div style={{ color: '#deb887' }}>New character have been saved</div>}
+    </form>
+  );
+};
+
+export default Form;

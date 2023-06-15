@@ -6,9 +6,13 @@ export type SearchPropsType = {
   props: string;
 };
 
+export type SearchProps = {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
 export type CardsState = {
   data: Character[];
-  error: string;
 };
 
 export interface Character {
@@ -32,15 +36,28 @@ type Location = {
 };
 
 export interface FormProps {
-  callback: (a: Character) => void;
+  onSubmit: (a: Character) => void;
 }
 
 export type FormFilds = {
-  name: HTMLInputElement;
-  date: HTMLInputElement;
-  status: HTMLSelectElement;
-  gender: HTMLInputElement;
-  location: HTMLSelectElement;
-  species: HTMLInputElement;
-  img: HTMLInputElement;
+  name: string;
+  created: string;
+  status: string;
+  gender: string;
+  location: string;
+  species: boolean;
+  image: FileList | null;
+};
+
+export type FormError = {
+  errors: {
+    name: string;
+    birthday: string;
+    status: string;
+    gender: string;
+    location: string;
+    species: string;
+    image: string;
+  };
+  isValid: boolean;
 };
