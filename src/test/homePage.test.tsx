@@ -8,7 +8,8 @@ describe('HomePage', () => {
   it('renders HomePage  component'),
     () => {
       render(<HomePage />);
-      expect(screen.getByText(/Rick and Morty/i)).toBeInTheDocument();
+      expect(screen.getByText(/Rick and Morty characters/i)).toBeInTheDocument();
+      expect(screen.getByText(/Rick and Morty characters/i)).toHaveClass('app-title');
       expect(screen.getByPlaceholderText(/Search character/i)).toBeInTheDocument();
     };
   it('fetch data'),

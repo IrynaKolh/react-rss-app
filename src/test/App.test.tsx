@@ -27,7 +27,7 @@ describe('App', () => {
     act(() => {
       userEvent.click(homeLink);
     });
-    expect(screen.getByText(/Rick and Morty characters/i)).toBeInTheDocument();
+    expect(screen.getByText(/Not found this character.../i)).toBeInTheDocument();
   });
   test('Not found page rooter', () => {
     act(() => {

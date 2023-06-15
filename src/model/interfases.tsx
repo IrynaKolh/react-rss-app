@@ -61,3 +61,21 @@ export type FormError = {
   };
   isValid: boolean;
 };
+
+export type SortType = 'name' | 'created';
+
+export type ModalProps = {
+  visible: boolean;
+  onClose: () => void;
+  data: Character;
+};
+
+export type CardProps = {
+  card: Character;
+  onClick?: () => void;
+};
+
+export type PaginationProps = {
+  page: number | string;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};

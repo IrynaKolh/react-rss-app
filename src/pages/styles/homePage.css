@@ -4,3 +4,14 @@
   display: flex;
   text-align: center;
 }
+.app-title {
+  text-align: center;
+  color: lightskyblue;
+}
+
+.pagination-btns {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}

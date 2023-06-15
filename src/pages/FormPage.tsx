@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Card from '../components/Card';
+import FormCard from '../components/FormCard';
 import Form from '../components/Form';
 import { Character } from '../model/interfases';
 import './styles/formPage.css';
@@ -17,7 +17,7 @@ const FormPage = () => {
       <Form onSubmit={getCardData} />
       <div role={'list'} className="form-cards-container">
         {myCards.map((item: Character) => (
-          <Card {...item} key={item.id} />
+          <FormCard {...item} key={item.id} />
         ))}
       </div>
     </div>
