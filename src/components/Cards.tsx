@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { CardsState, Character } from './../model/interfases';
-import Card from './card';
+import { CardsState, Character } from '../model/interfases';
+import Card from './Card';
 import './styles/cards.css';
-import { URL } from './../helpers/constants';
+import { URL } from '../helpers/constants';
 
 class Cards extends Component {
   state: CardsState = {

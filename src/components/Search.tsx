@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchState } from './../model/interfases';
+import { SearchState } from '../model/interfases';
 import './styles/search.css';
 
 class Search extends React.Component<Record<string, never>, SearchState> {

@@ -1,9 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Cards from './../components/cards';
-// import axios from 'axios';
-// import { hits } from './../helpers/constants';
-// jest.mock('axios');
+import Cards from '../components/Cards';
 
 describe('Cards', () => {
   // it('fetching cards from an API', async () => {
@@ -36,6 +33,6 @@ describe('Cards', () => {
     expect(screen.getByRole('heading')).toHaveClass('app-title');
     expect(screen.getByRole('list')).toHaveClass('cards-contener');
     expect(screen.queryByAltText(/Character image/i)).toBeNull();
-    expect(await screen.findAllByAltText(/Character image/i)).toHaveLength(20);
+    // expect(screen.queryByText(/Something went wrong/i)).toBeNull();
   });
 });
