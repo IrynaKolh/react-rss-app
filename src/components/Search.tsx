@@ -1,9 +1,9 @@
-import React from 'react';
-import { SearchProps } from '../model/interfases';
 import './styles/search.css';
+import { useAppSelector } from './../store/hooks';
+import { SearchProps } from '../model/interfases';
 
 const Search = (props: SearchProps) => {
-  const { onChange, value } = props;
+  const search = useAppSelector((state) => state.search.searchQuery);
 
   return (
     <div className="search-box">
@@ -11,8 +11,8 @@ const Search = (props: SearchProps) => {
       <input
         id="search"
         type="search"
-        value={value}
-        onChange={onChange}
+        value={search}
+        onChange={props.onChange}
         placeholder="Search character"
       />
     </div>

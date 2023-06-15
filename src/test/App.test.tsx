@@ -3,13 +3,17 @@ import { render, screen, act } from '@testing-library/react';
 import App from '../App';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from '../store';
 
 describe('App', () => {
   test('App rooter', () => {
     act(() => {
       render(
         <MemoryRouter>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </MemoryRouter>
       );
     });
@@ -33,7 +37,9 @@ describe('App', () => {
     act(() => {
       render(
         <MemoryRouter initialEntries={['/testpage']}>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </MemoryRouter>
       );
     });

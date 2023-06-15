@@ -1,17 +1,13 @@
 import { CardProps } from './../model/interfases';
 
-export const URL = 'https://rickandmortyapi.com/api/';
-export enum Endpoint {
-  characters = 'character',
-  locations = 'location',
-  episodes = 'episode',
-}
+export const URL = 'https://rickandmortyapi.com/api/character/';
+
 export const SEARCH_PARAM = 'name=';
 export const PAGE = 'page=';
 
 export const MAX_IMAGE_SIZE = 512000;
 export const cardsProps = {
-  data: [
+  cardsList: [
     {
       id: 1,
       name: 'Morty Smith',
@@ -86,4 +82,14 @@ export const exampleCard: CardProps = {
     created: '2017-11-04T18:50:21.651Z',
   },
   onClick: () => {},
+};
+
+export const serverResponse = {
+  info: {
+    count: 826,
+    pages: 42,
+    next: 'https://rickandmortyapi.com/api/character/?page=2',
+    prev: null,
+  },
+  results: [],
 };
