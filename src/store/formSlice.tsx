@@ -1,5 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PayloadAction } from '@reduxjs/toolkit';
+import * as toolkitRaw from '@reduxjs/toolkit';
 import { Character } from '../model/interfases';
+
+type TypeToolkitRaw = typeof toolkitRaw & { default?: unknown };
+const { createSlice } = ((toolkitRaw as TypeToolkitRaw).default ?? toolkitRaw) as typeof toolkitRaw;
 
 type FormState = {
   formCards: Character[];
